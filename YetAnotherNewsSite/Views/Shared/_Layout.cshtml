@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-area="" asp-controller="Home" asp-action="" src="@Url.Content("~Images/Login_Icon.svg)></a>
+                        <img class="navbar-login " src="~/Images/Login_Icon.svg" alt="Login" />
                         <a asp-area="" asp-controller="Home" asp-action="">@User.Identity.Name</a>
                     }
                     @if (!User.Identity.IsAuthenticated)
