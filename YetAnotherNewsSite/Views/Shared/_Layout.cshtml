@@ -14,14 +14,23 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">YetAnotherNewsSite</a>
-                </div>               
+                </div>
                 <div>
                     @Html.TextBox("id", ViewBag.CurrentFilter as string)
                     <input type="submit" value="Search" />
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-                    <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="" asp-controller="Home" asp-action="" src="@Url.Content("~Images/Login_Icon.svg)></a>
+                        <a asp-area="" asp-controller="Home" asp-action="">@User.Identity.Name</a>
+                    }
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+
+                        <a asp-area="" asp-controller="Admin" asp-action="Create"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                        <a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    }
                 </ul>
             </div>
         </nav>
