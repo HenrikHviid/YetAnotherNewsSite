@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using YetAnotherNewsSite.Data;
+using YetAnotherNewsSite.Models;
 
 namespace YetAnotherNewsSite
 {
@@ -24,6 +28,20 @@ namespace YetAnotherNewsSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<Data.YansContext>(options => options.UseSqlServer(Configuration.GetConnectionString("YansContext")));
+            services.AddIdentity<User, IdentityRole>(options => {
+                options.User.RequireUniqueEmail = true;
+                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<YansContext>().AddDefaultTokenProviders();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +59,7 @@ namespace YetAnotherNewsSite
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -52,6 +70,8 @@ namespace YetAnotherNewsSite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //YansContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
         }
     }
 }

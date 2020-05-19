@@ -8,8 +8,8 @@ namespace YetAnotherNewsSite.Models
 {
     public class Comment
     {
+        public int CommentId { get; set; }
         public string Textfield { get; set; }
         public User User { get; set; }
-
     }
 }

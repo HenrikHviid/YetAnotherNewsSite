@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace YetAnotherNewsSite.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public string UserId { get; set; }
-        public string UserName { get; set; }
     }
 }
