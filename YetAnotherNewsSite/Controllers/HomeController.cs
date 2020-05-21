@@ -30,7 +30,7 @@ namespace YetAnotherNewsSite.Controllers
                 var article = new Article();
                 //Fill out article properties
                 article.Author = post["author"].ToString();
-                article.TextField = post["text"].ToString();
+                article.Text = post["text"].ToString();
 
 
                 //add article to list
