@@ -4,7 +4,8 @@
     @foreach (var article in Model)
     {
         <p><b>@article.Author</b></p>
-        <p>@article.TextField</p>
+        <p>@article.Text</p>
+        <img src="@article.Main_Image" width="800px" height="auto" />
     }
 </table>
 
