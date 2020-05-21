@@ -94,6 +94,8 @@ h4, .h4 {
 
     .container {
         max-width: 540px;
+        width:400px;
+        margin-top: 4%
     }
 }
 
@@ -120,10 +122,12 @@ h4, .h4 {
         align-content: center;
         margin: 4% 0 4% 0;
     }
-    
+
     .container {
+        
         max-width: 540px;
-      
+        width: 500px;
+        margin-top: 4%
     }
 }
 
@@ -156,8 +160,11 @@ h4, .h4 {
     }
 
     .container {
+     
         max-width: 720px;
         width: 600px;
+        width: 600px;
+        margin:4% 0 4% 0;
     }
 
 }
@@ -174,6 +181,7 @@ h4, .h4 {
 
     .navbar-brand {
         justify-content: flex-start;
+        margin-left: 8%;
     }
 
     .access {
@@ -181,6 +189,7 @@ h4, .h4 {
     }
 
     .container {
+     
         max-width: 960px;
         width:600px;
     }
@@ -196,6 +205,11 @@ h4, .h4 {
         align-items: center;
     }
 
+    .navbar-brand {
+        justify-content: flex-start;
+        margin-left: 8%;
+    }
+
     .access {
         justify-content: flex-end;
     }
@@ -206,11 +220,7 @@ h4, .h4 {
     }
 }
 
-/* Inputs */
-
-input {
-    /*margin:1% 0 1% 0;*/
-}
+/* Inputs textarea colour */
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
@@ -219,17 +229,17 @@ textarea::-webkit-input-placeholder {
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-    color: greenyellow;
+      color: white;
 }
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-    color:blue;
+    color:white;
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-    color: yellow;
+    color: white;
 }
 
 /* Header Section */
@@ -254,7 +264,6 @@ a.navbar-brand {
     color: #fff;
     white-space: normal;
     display: flex;
-    margin-left:8%;
     word-break: break-all;
 }
 
@@ -292,13 +301,11 @@ a.navbar-brand {
     color: #fff;
     background: transparent;
     border: 2px solid #fff;
-    margin-left: -2px;
     padding: 8px 20px 8px 20px;
 }
 
 .access {
     display: flex;
-    margin-right: 30px;
 }
 
 #Password, #Email {
@@ -343,10 +350,10 @@ a.navbar-brand {
 
 .bg-primary {
     background-color: #007bff !important;
-    margin-top:5%;
-    margin-bottom:1%;
-    padding:1%;
-    color:#fff;
+    margin-top: 5%;
+    margin-bottom: 4%;
+    padding: 2% 3% 1% 2%;
+    color: #fff;
 }
 
 .btn.btn-default {
@@ -362,7 +369,8 @@ a.navbar-brand {
 
 .btn.btn-primary {
     background-color: #007bff;
-    color:#fff;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .btn.btn-primary:hover {
@@ -408,25 +416,29 @@ a.navbar-brand {
     background: transparent;
 }
 
+/* Form */
+
 form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 4%;
 }
+
+/* Form Inputs Styling */
 
 .form-control {
     display: block;
     width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    padding:1% 0 1% 0;
+    font-size: 1em;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: #4B4848;
     background-color: #fff;
-    background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: 0.25rem;
+    border-radius: 3px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+/* Warning text color */
 
 .text-danger {
     color: #dc3545 !important;
@@ -436,17 +448,7 @@ a.text-danger:hover, a.text-danger:focus {
     color: #a71d2a !important;
 }
 
-Inline style {
-    height: 24.36px;
-    max-width: 24.36px;
-    vertical-align: top;
-    position: absolute;
-    top: 174.18px;
-    left: 1343.27px;
-    cursor: pointer;
-    Error: resize : both;
-    z-index: 2147483646;
-}
+/* Footer */
 
 footer {
     position: absolute;
@@ -462,11 +464,11 @@ header, footer {
 
 header, main, footer {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
     align-items: center;
     justify-content: center;
 }
+
+/* Social Medias setup */
 
 .social-group {
     display: grid;
@@ -511,3 +513,4 @@ header, main, footer {
     grid-column: 3;
     grid-row: 3;
 }
+
