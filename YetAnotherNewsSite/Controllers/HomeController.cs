@@ -8,24 +8,40 @@ using Microsoft.Extensions.Logging;
 using YetAnotherNewsSite.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace YetAnotherNewsSite.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
-        public IActionResult Index() => View(GetData(nameof(Index)));
-        [Authorize(Roles = "Users")]
-        public IActionResult OtherAction() => View("Index",
-        GetData(nameof(OtherAction)));
-        private Dictionary<string, object> GetData(string actionName) =>
-new Dictionary<string, object>
-{
-    ["Action"] = actionName,
-    ["User"] = HttpContext.User.Identity.Name,
-    ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
-    ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
-    ["In Users Role"] = HttpContext.User.IsInRole("Users")
-};
+        
+        public IActionResult Index()
+        {
+            var fetch = new Fetch();
+
+            string data = fetch.GetNews("denmark");
+
+            //            result.Wait();
+            //          Response.WriteAsync(result.Result);
+            var dict = new Dictionary<string, object>();
+            dict.Add(data, "hehe");
+            return View(dict);
+        }
+
+
+
+
+        //[Authorize(Roles = "Users")]
+        //public IActionResult OtherAction() => View("Index",
+        //GetData(nameof(OtherAction)));
+        //private Dictionary<string, object> GetData(string actionName) =>
+        //    new Dictionary<string, object>
+        //    {
+        //        ["Action"] = actionName,
+        //        ["User"] = HttpContext.User.Identity.Name,
+        //        ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
+        //        ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
+        //        ["In Users Role"] = HttpContext.User.IsInRole("Users")
+        //    };
     }
 }
