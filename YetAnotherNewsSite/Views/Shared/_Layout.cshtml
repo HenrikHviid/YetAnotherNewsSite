@@ -4,37 +4,66 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - YetAnotherNewsSite</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/css/Styles.css" />
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">YetAnotherNewsSite</a>
-                </div>               
-                <div>
-                    @Html.TextBox("id", ViewBag.CurrentFilter as string)
-                    <input type="submit" value="Search" />
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-                    <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <div class="nav-wrapper">
+            <nav class="navbar">
 
-    <footer class="border-top footer text-muted">
+                <div class="navbar-logo">
+                    <a class="navbar-brand" href="#">YANS NEWS</a>
+                </div>
+
+                <div class="searchContainer">
+                    @Html.TextBox("id", ViewBag.CurrentFilter as string, new { Class = "searchbar", @placeholder = "Search..." })
+                    <!--<input type="submit" value="Search" />-->
+                    <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                </div>
+
+                <ul class="access">
+                    <a href="#"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
+                    <a href="#"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+    <main>
         <div class="container">
-            &copy; 2020 - YetAnotherNewsSite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="form pb-3" role="main">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+    <footer class="border-top footer text-muted">
+        <div class="center">
+            YANS NEWS
+        </div>
+        <div class="center">
+            <div class="social-group">
+                <div class="social-item">
+                    <img src="~/Images/Instagram_icon.png" alt="instagram">
+                </div>
+                <div class="social-item">
+                    <img src="~/Images/Facebook_icon.png" alt="facebook">
+                </div>
+                <div class="social-item">
+                    <img src="~/Images/Twitter_icon.png" alt="twitter">
+                </div>
+            </div>
+            <div class="policies">
+                <a class="info-item fi" asp-area="" asp-controller="Home" asp-action="Cookie Policy">Cookie Policy</a>
+                <a class="info-item se">/</a>
+                <a class="info-item th" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+            </div>
+            <div class="center">
+                &copy; 2020 - YetAnotherNewsSite
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
