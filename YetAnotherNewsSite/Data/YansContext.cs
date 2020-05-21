@@ -55,12 +55,25 @@ namespace YetAnotherNewsSite.Data
         }
 
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Article>().ToTable("Articles");
             modelBuilder.Entity<Comment>().ToTable("Comments");
             modelBuilder.Entity<User>().ToTable("Users");
+        
+
+
+
+
         }
+    
+
+
+
+
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Net;
+using System.Net.Http.Headers;
+using YetAnotherNewsSite.Data;
 
 namespace YetAnotherNewsSite.Models
 {
@@ -13,6 +15,8 @@ namespace YetAnotherNewsSite.Models
             {
                 data = wc.DownloadString($"http://webhose.io/filterWebContent?token={API_KEY}&format=json&sort=crawled&q={searchCriteria}");
             }
+
+            
 
             return data;
         }

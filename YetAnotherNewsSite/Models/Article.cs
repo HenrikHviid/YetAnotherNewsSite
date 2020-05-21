@@ -9,13 +9,14 @@ namespace YetAnotherNewsSite.Models
     public class Article
     {
         public int ArticleId { get; set; }
-        public string Headline { get; set; }
-        public string TextField { get; set; }
-        public string  Picture { get; set; }
+        public string Uuid { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
+        public string Main_Image { get; set; }
         public string Author { get; set; }
-        public DateTime Date { get; set; }
+        public string Url { get; set; }
+        public DateTime Published { get; set; }
         public List<Comment> Comments { get; set; }
-
 
 
     }
