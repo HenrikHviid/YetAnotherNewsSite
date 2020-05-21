@@ -9,7 +9,6 @@ namespace YetAnotherNewsSite.Models
         {
             string data = "";
             
-    
             using (WebClient wc = new WebClient())
             {
                 data = wc.DownloadString($"http://webhose.io/filterWebContent?token={API_KEY}&format=json&sort=crawled&q={searchCriteria}");

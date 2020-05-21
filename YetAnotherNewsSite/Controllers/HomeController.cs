@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using YetAnotherNewsSite.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
+using YetAnotherNewsSite.Data;
 
 namespace YetAnotherNewsSite.Controllers
 {
@@ -17,31 +11,37 @@ namespace YetAnotherNewsSite.Controllers
         
         public IActionResult Index()
         {
+            //Creating a fetch object
             var fetch = new Fetch();
-
+            //fetch data with the fetch object
             string data = fetch.GetNews("denmark");
+            //Parse data to json
+            JObject json = JObject.Parse(data);
 
-            //            result.Wait();
-            //          Response.WriteAsync(result.Result);
-            var dict = new Dictionary<string, object>();
-            dict.Add(data, "hehe");
-            return View(dict);
+
+            //json["posts"][7]["title"].ToString();
+
+            //creating a list of articles
+            var articles = new List<Article>();
+            //iterate over posts in json
+            foreach(var post in json["posts"])
+            {
+                //Create article object
+                var article = new Article();
+                //Fill out article properties
+                article.Author = post["author"].ToString();
+                article.TextField = post["text"].ToString();
+
+
+                //add article to list
+                articles.Add(article);
+                
+            }
+
+
+            //send articles to view
+            return View(articles);
         }
 
-
-
-
-        //[Authorize(Roles = "Users")]
-        //public IActionResult OtherAction() => View("Index",
-        //GetData(nameof(OtherAction)));
-        //private Dictionary<string, object> GetData(string actionName) =>
-        //    new Dictionary<string, object>
-        //    {
-        //        ["Action"] = actionName,
-        //        ["User"] = HttpContext.User.Identity.Name,
-        //        ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
-        //        ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
-        //        ["In Users Role"] = HttpContext.User.IsInRole("Users")
-        //    };
     }
 }
