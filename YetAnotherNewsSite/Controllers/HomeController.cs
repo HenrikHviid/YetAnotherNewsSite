@@ -5,12 +5,19 @@ using Newtonsoft.Json.Linq;
 using YetAnotherNewsSite.Data;
 using System.Net.WebSockets;
 using System;
+using SQLitePCL;
 
 namespace YetAnotherNewsSite.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly YansContext _context;
+        public HomeController(YansContext context)
+        {
+            _context = context;
+        }
         
+        //GET: articles
         public IActionResult Index()
         {
             //Creating a fetch object
@@ -48,10 +55,11 @@ namespace YetAnotherNewsSite.Controllers
                 //add article to list
                 articles.Add(article);
 
-                
+                //Attempt to add article to database
+                _context.Articles.AddAsync(article);
 
             }
-           
+            _context.SaveChanges(); 
 
             //send articles to view
             return View(articles);

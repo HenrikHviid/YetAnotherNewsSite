@@ -10,8 +10,8 @@ using YetAnotherNewsSite.Data;
 namespace YetAnotherNewsSite.Migrations
 {
     [DbContext(typeof(YansContext))]
-    [Migration("20200518123045_Add-Migration a")]
-    partial class AddMigrationa
+    [Migration("20200523200439_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,16 +162,22 @@ namespace YetAnotherNewsSite.Migrations
                     b.Property<string>("Author")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<string>("Main_Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Published")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Headline")
+                    b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Picture")
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TextField")
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Uuid")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleId");
