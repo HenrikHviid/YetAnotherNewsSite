@@ -62,6 +62,11 @@ namespace YetAnotherNewsSite.Models
                 {
                     continue;
                 }
+                //checking if articles from the API has the matching Image
+                if ((articles.Where(a => a.Main_Image == article.Main_Image)).Count() > 0)
+                {
+                    continue;
+                }
                 //checking if the article contains image and has title
                 if (ContainsImage(article) && HasTitle(article))
                 {
