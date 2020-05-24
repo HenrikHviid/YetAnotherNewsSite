@@ -6,64 +6,39 @@ using YetAnotherNewsSite.Data;
 using System.Net.WebSockets;
 using System;
 using SQLitePCL;
+using System.Linq;
 
 namespace YetAnotherNewsSite.Controllers
 {
     public class HomeController : Controller
     {
+        private DataHandler dataHandler;
         private readonly YansContext _context;
+        private List<Article> articles;
+        
         public HomeController(YansContext context)
         {
             _context = context;
         }
-        
-        //GET: articles
+
+        //Index view with default searchterm
         public IActionResult Index()
         {
-            //Creating a fetch object
-            var fetch = new Fetch();
-            //fetch data with the fetch object
-            string data = fetch.GetNews("denmark");
-            //Parse data to json
-            JObject json = JObject.Parse(data);
+            // create a data handler
+            dataHandler = new DataHandler(_context);
+            
+            // Get new articles
+            articles = dataHandler.GetNewArticles("denmark");
 
-
-            //json["posts"][7]["title"].ToString();
-
-            //creating a list of articles
-            var articles = new List<Article>();
-            //iterate over posts in json
-            foreach(var post in json["posts"])
-            {
-                //Create article object
-                var article = new Article();
-                //Fill out article properties
-                article.Uuid = post["uuid"].ToString();
-                article.Title = post["title"].ToString();
-                article.Text = post["text"].ToString();
-                article.Main_Image = post["thread"]["main_image"].ToString();
-                article.Author = post["author"].ToString();
-                article.Url = post["url"].ToString();
-
-                //converting published time from string to DateTime
-                var published = post["published"].ToString();
-                var dateTime = Convert.ToDateTime(published);
-                article.Published = dateTime;
-
-                
-
-                //add article to list
-                articles.Add(article);
-
-                //Attempt to add article to database
-                _context.Articles.AddAsync(article);
-
-            }
-            _context.SaveChanges(); 
-
-            //send articles to view
             return View(articles);
         }
 
+        //Index view with custom searchterm from the searchbar
+        public IActionResult Search(string searchTerm)
+        {
+            // Get new articles
+            articles = dataHandler.GetNewArticles(searchTerm);
+            return View(articles);
+        }
     }
 }

@@ -1,13 +1,9 @@
-﻿@model List<Article>
+﻿@model Article
 <div class="bg-primary m-1 p-1 text-white"><h4>User Details</h4></div>
 <table class="table table-sm table-bordered m-1 p-1">
-    @foreach (var article in Model)
-    {
-    <a asp-controller="Article" asp-action="Index" asp-route-id="@article.Uuid.ToString()">
-        <p><b>@article.Title</b></p>
-        <img src="@article.Main_Image" width="800px" height="auto" />
-    </a>
-    }
+    <p><b>@Model.Title</b></p>
+    <img src="@Model.Main_Image" width="800px" height="auto" />
+    <p style="margin-bottom: 100vh;">@Model.Text</p> 
 </table>
 
 @if (User?.Identity?.IsAuthenticated ?? false)
@@ -15,5 +11,6 @@
     <a asp-controller="Account" asp-action="Logout"
        class="btn btn-danger">Logout</a>
 }
+
 
 
