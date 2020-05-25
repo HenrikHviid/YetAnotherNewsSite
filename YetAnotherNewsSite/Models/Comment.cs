@@ -11,8 +11,5 @@ namespace YetAnotherNewsSite.Models
         public int CommentId { get; set; }
         public string Textfield { get; set; }
         public User User { get; set; }
-        public DateTime DateTime { get; set; }
     }
-
-
 }
