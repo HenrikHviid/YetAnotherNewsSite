@@ -179,7 +179,7 @@ namespace YetAnotherNewsSite.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Textfield = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true),
-                    ArticleId = table.Column<int>(nullable: true)
+                    ArticleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,7 +189,7 @@ namespace YetAnotherNewsSite.Migrations
                         column: x => x.ArticleId,
                         principalTable: "Articles",
                         principalColumn: "ArticleId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserId",
                         column: x => x.UserId,

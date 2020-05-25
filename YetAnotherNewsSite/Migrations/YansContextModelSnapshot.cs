@@ -190,7 +190,7 @@ namespace YetAnotherNewsSite.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ArticleId")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Textfield")
@@ -328,7 +328,9 @@ namespace YetAnotherNewsSite.Migrations
                 {
                     b.HasOne("YetAnotherNewsSite.Models.Article", null)
                         .WithMany("Comments")
-                        .HasForeignKey("ArticleId");
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("YetAnotherNewsSite.Models.User", "User")
                         .WithMany()
