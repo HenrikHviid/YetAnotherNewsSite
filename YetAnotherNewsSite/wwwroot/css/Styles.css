@@ -475,6 +475,12 @@ header, main, footer {
     padding-bottom: 400px;
 }
 
+/* Article image*/
+.img-size{
+    width: 100%;
+    height: auto
+}
+
 /* Social Medias setup */
 
 .social-group {

@@ -6,7 +6,7 @@
         <div class="container">
             <a asp-controller="Article" asp-action="Index" asp-route-id="@article.Uuid.ToString()">
                 <p><b>@article.Title</b></p>
-                <img src="@article.Main_Image" width="800px" height="auto" />
+                <img src="@article.Main_Image" class="img-size" />
             </a>
         </div>
     }
