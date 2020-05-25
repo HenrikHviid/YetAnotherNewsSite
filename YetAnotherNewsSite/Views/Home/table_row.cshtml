@@ -1,0 +1,29 @@
+﻿@model List<YetAnotherNewsSite.Database_Access.db.Articles>
+
+   
+
+        @{
+
+            foreach (var item in Model)
+
+            {
+
+                <tr>
+
+                    <td>@item.Articleid</td>
+
+                    <td>@item.Headline</td>
+
+                    <td>@item.TextField</td>
+
+                    <td>@item.Picture</td>
+
+                    <td>@item.Author</td>
+
+                    <td>@item.Date</td>
+
+                </tr>
+
+            }
+
+        }

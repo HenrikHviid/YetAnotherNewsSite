@@ -18,6 +18,6 @@ namespace YetAnotherNewsSite.Models
         public DateTime Published { get; set; }
         public List<Comment> Comments { get; set; }
 
-
     }
+
 }
