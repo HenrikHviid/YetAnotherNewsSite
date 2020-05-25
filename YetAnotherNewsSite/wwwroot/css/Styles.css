@@ -454,7 +454,7 @@ footer {
     position: absolute;
     bottom: 0;
     width:100%;
-    padding:4%;
+    padding:120px;
     color:#fff;
 }
 
@@ -466,6 +466,13 @@ header, main, footer {
     display: grid;
     align-items: center;
     justify-content: center;
+}
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+.content-wrapper{
+    padding-bottom: 400px;
 }
 
 /* Social Medias setup */

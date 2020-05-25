@@ -104,5 +104,24 @@ namespace YetAnotherNewsSite.Models
         {
             return article.Title != "";
         }
+        //checking if there is an image
+        //public bool URLExists(Article article)
+        //{
+        //    bool result = true;
+
+        //    WebRequest webRequest = WebRequest.Create(article.Main_Image);
+        //    webRequest.Timeout = 1200; //miliseconds
+        //    webRequest.Method = "HEAD";
+
+        //    try
+        //    {
+        //        webRequest.GetResponse();
+        //    }
+        //    catch
+        //    {
+        //        result = false;
+        //    }
+        //    return result;
+        //}
     }
 }
