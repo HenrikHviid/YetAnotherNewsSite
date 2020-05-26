@@ -18,18 +18,18 @@
                     <nav class="navbar">
 
                         <div class="navbar-logo">
-                            <a class="navbar-brand" href="#">YANS NEWS</a>
+                            <a asp-controller="Home" asp-action="Index" class="navbar-brand">YANS NEWS</a>
                         </div>
 
                         <div class="searchContainer">
-                            @Html.TextBox("id", ViewBag.CurrentFilter as string, new { Class = "searchbar", @placeholder = "Search..." })
-                            <!--<input type="submit" value="Search" />-->
-                            <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                                @Html.TextBox("id", ViewBag.CurrentFilter as string, new { Class = "searchbar", @placeholder = "Search..." })
+                                <!--<input type="submit" value="Search" />-->
+                                <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
                         </div>
 
                         <ul class="access">
-                            <a href="#"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
-                            <a href="#"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
+                            <a asp-controller="Admin" asp-action="Create"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
+                            <a asp-controller="Account" asp-action="Login"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
                         </ul>
 
                     </nav>
