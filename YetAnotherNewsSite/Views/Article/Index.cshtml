@@ -1,22 +1,37 @@
-﻿@model Article
-    <div class="container">
-        <h1 class="article-header">@Model.Title</h1>
-        <img class="img-size" src="@Model.Main_Image" />
-        <div class="article-info">
-            <p class="published">Published: @Model.Published</p>
-            <p class="author">Written by: @Model.Author</p>
-        </div>
-        <p>@Model.Text</p>
-        <div class="article-url">
-        <a href="@Model.Url" target="_blank">Read the original article here</a>
-        </div>
-    </div>
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model NewsViewModel
 
-@if (User?.Identity?.IsAuthenticated ?? false)
-{
-    <a asp-controller="Account" asp-action="Logout"
-       class="btn btn-danger">Logout</a>
-}
+@{ string id = Model.Article.Uuid;}
+<div class="stickyfooter" style="margin-bottom: 100vh;">
+    <table class="table table-sm table-bordered m-1 p-1">
+        <p><b>@Model.Article.Title</b></p>
+        <img src="@Model.Article.Main_Image" width="800px" height="auto" />
+        @Html.Hidden(Model.Article.Uuid)
+        <p>@Model.Article.Text</p>
+        <br />
+    </table>
+    <h2>Comments</h2>
+    <br />
+
+    @foreach (Comment comment in Model.Article.Comments.ToList())
+    {
+        <p>@comment.Textfield.ToString()</p>
+    }
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        @using (Html.BeginForm("Article", "PostComment", FormMethod.Post))
+        {
+            <input type="text" name="Textfield" id="Textfield" />
+            @*<a asp-controller="Article" asp-action="PostComment" asp-route-id="@Model.Article.Uuid.ToString()" method="post">Add Comment</a>*@
+        }
 
 
 
+    }
+
+
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <a asp-controller="Account" asp-action="Logout"
+           class="btn btn-danger">Logout</a>
+    }

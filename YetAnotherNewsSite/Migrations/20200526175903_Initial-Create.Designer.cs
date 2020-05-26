@@ -10,7 +10,7 @@ using YetAnotherNewsSite.Data;
 namespace YetAnotherNewsSite.Migrations
 {
     [DbContext(typeof(YansContext))]
-    [Migration("20200526075136_InitialCreate")]
+    [Migration("20200526175903_Initial-Create")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
