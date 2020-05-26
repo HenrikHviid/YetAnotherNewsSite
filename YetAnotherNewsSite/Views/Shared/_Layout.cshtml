@@ -18,7 +18,7 @@
                     <nav class="navbar">
 
                         <div class="navbar-logo">
-                            <a class="navbar-brand" href="#">YANS NEWS</a>
+                            <a asp-controller="Home" class="navbar-brand">YANS NEWS</a>
                         </div>
 
                         <div class="searchContainer">
@@ -29,8 +29,8 @@
                         </div>
 
                         <ul class="access">
-                            <a href="#"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
-                            <a href="#"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
+                            <a asp-controller="Admin" asp-action="Create"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
+                            <a asp-controller="Account" asp-action="Login"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
                         </ul>
 
                     </nav>
