@@ -19,8 +19,6 @@ namespace YetAnotherNewsSite.Migrations
                     Main_Image = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
-                    Language = table.Column<string>(nullable: true),
-                    Site_Type = table.Column<string>(nullable: true),
                     Published = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

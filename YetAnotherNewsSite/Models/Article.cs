@@ -15,8 +15,6 @@ namespace YetAnotherNewsSite.Models
         public string Main_Image { get; set; }
         public string Author { get; set; }
         public string Url { get; set; }
-        public string Language { get; set; }
-        public string Site_Type { get; set; }
         public DateTime Published { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
     }
