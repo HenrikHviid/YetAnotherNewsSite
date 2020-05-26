@@ -22,13 +22,14 @@ namespace YetAnotherNewsSite.Controllers
         }
 
         //Index view with default searchterm
-        public IActionResult Index()
+        public IActionResult Index(string searchTerm = "")
         {
             // create a data handler
             dataHandler = new DataHandler(_context);
             
+            searchTerm = searchTerm.Equals("") ? "denmark" : searchTerm;
             // Get new articles
-            articles = dataHandler.GetNewArticles("denmark");
+            articles = dataHandler.GetNewArticles(searchTerm);
 
             return View(articles);
         }
@@ -36,9 +37,7 @@ namespace YetAnotherNewsSite.Controllers
         //Index view with custom searchterm from the searchbar
         public IActionResult Search(string searchTerm)
         {
-            // Get new articles
-            articles = dataHandler.GetNewArticles(searchTerm);
-            return View(articles);
+            return RedirectToAction("Index", new { searchTerm = searchTerm });
         }
     }
 }

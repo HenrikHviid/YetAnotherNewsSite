@@ -8,8 +8,21 @@
         </div>
         <p>@Model.Text</p>
         <div class="article-url">
-        <a href="@Model.Url" target="_blank">Read the original article here</a>
+            <a href="@Model.Url" target="_blank">Read the original article here</a>
         </div>
+
+        @foreach (var comment in Model.Comments)
+        {
+            <p>@comment.Textfield</p>
+        }
+
+        <form action="~/Article/PostComment?id=@Model.Uuid.ToString()" method="post">
+            <h3>Comments</h3>
+            <div class="form-group">
+                <label>Add Comment</label><input name="text"/>
+                <input type="submit" value="Send" />
+            </div>
+        </form>
     </div>
 
 @if (User?.Identity?.IsAuthenticated ?? false)

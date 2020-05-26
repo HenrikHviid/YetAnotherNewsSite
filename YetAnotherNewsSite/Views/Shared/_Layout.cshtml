@@ -22,9 +22,10 @@
                         </div>
 
                         <div class="searchContainer">
-                            @Html.TextBox("id", ViewBag.CurrentFilter as string, new { Class = "searchbar", @placeholder = "Search..." })
-                            <!--<input type="submit" value="Search" />-->
-                            <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                            <form action="~/Home/Search" method="post">
+                                <input class="searchbar" name="searchTerm" />
+                                <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
 
                         <ul class="access">
