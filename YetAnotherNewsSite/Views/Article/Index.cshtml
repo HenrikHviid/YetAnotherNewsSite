@@ -13,6 +13,7 @@
         @if (User?.Identity?.IsAuthenticated ?? true)
         {
             var username = Context.User.Identity.Name;
+            <p>@username</p>
         }
 
 

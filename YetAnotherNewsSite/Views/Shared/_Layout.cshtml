@@ -27,12 +27,20 @@
                                 <button class="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
-
-                        <ul class="access">
-                            <a asp-controller="Admin" asp-action="Create"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
-                            <a asp-controller="Account" asp-action="Login"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
-                        </ul>
-
+                        @if (User?.Identity?.IsAuthenticated ?? true)
+                        {
+                            var username = Context.User.Identity.Name;
+                            <ul class="access">
+                                <a asp-controller="Admin" asp-action="Edit"><span class="btn glyphicon glyphicon-user"></span>@username</a>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="access">
+                                <a asp-controller="Admin" asp-action="Create"><span class="btn glyphicon glyphicon-user"></span> Sign Up</a>
+                                <a asp-controller="Account" asp-action="Login"><span class="btn glyphicon glyphicon-log-in"></span> Login</a>
+                            </ul>
+                        }
                     </nav>
                 </div>
             </header>
