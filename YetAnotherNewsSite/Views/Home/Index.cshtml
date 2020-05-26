@@ -1,15 +1,16 @@
 ﻿@model List<Article>
 
-
-    @foreach (var article in Model)
-    {
-        <div class="container">
-            <a asp-controller="Article" asp-action="Index" asp-route-id="@article.Uuid.ToString()">
-                <p><b>@article.Title</b></p>
+@foreach (var article in Model)
+{
+    <div class="article-container">
+        <a asp-controller="Article" asp-action="Index" asp-route-id="@article.Uuid.ToString()">
+            <div class="overlay-container">
                 <img src="@article.Main_Image" class="img-size" />
-            </a>
-        </div>
-    }
+                <div class="overlay-object"><h2>@article.Title</h2></div>
+            </div>
+        </a>
+    </div>
+}
 
 @if (User?.Identity?.IsAuthenticated ?? false)
 {

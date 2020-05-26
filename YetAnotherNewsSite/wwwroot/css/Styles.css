@@ -65,13 +65,19 @@ h4, .h4 {
     justify-self: center;
     text-align:center;
 }
-
+.article-container {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.article-info{
+    display: block;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
 /* Device Media Queries */
-
 /* Smallest devices (landscape phones, 0px and up) */
-
 @media (min-width: 0px) {
-
     .navbar {
         display: grid;
         grid-template-columns: 1fr;
@@ -476,9 +482,42 @@ header, main, footer {
 }
 
 /* Article image*/
-.img-size{
+.img-size {
     width: 100%;
-    height: auto
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+/*Image overlay*/
+.overlay-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.overlay-object {
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7); /* Black see-through */
+    width: 100%;
+    padding: 20px;
+    bottom: 0;
+}
+/*Article header*/
+.article-header{
+    padding-bottom: 45px;
+}
+/*Article published time and author*/
+.published{
+    display: inline-block;    
+}
+.author {
+    display: inline-block;
+    float: right;
+}
+/*Article URL*/
+.article-url{
+    padding-top: 20px;
 }
 
 /* Social Medias setup */

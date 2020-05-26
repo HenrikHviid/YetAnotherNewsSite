@@ -1,9 +1,16 @@
 ﻿@model Article
-<table class="table table-sm table-bordered m-1 p-1">
-    <p><b>@Model.Title</b></p>
-    <img class="img-size" src="@Model.Main_Image"/>
-    <p>@Model.Text</p> 
-</table>
+    <div class="container">
+        <h1 class="article-header">@Model.Title</h1>
+        <img class="img-size" src="@Model.Main_Image" />
+        <div class="article-info">
+            <p class="published">Published: @Model.Published</p>
+            <p class="author">Written by: @Model.Author</p>
+        </div>
+        <p>@Model.Text</p>
+        <div class="article-url">
+        <a href="@Model.Url" target="_blank">Read the original article here</a>
+        </div>
+    </div>
 
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
