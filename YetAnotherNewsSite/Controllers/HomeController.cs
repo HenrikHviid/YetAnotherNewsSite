@@ -15,7 +15,7 @@ namespace YetAnotherNewsSite.Controllers
         private DataHandler dataHandler;
         private readonly YansContext _context;
         private List<Article> articles;
-
+        
         public HomeController(YansContext context)
         {
             _context = context;
@@ -26,7 +26,7 @@ namespace YetAnotherNewsSite.Controllers
         {
             // create a data handler
             dataHandler = new DataHandler(_context);
-
+            
             // Get new articles
             articles = dataHandler.GetNewArticles("denmark");
 

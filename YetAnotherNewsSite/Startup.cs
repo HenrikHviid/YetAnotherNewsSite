@@ -64,9 +64,9 @@ namespace YetAnotherNewsSite
 
             app.UseAuthorization();
 
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllerRoute(
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
