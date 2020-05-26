@@ -1,34 +1,46 @@
 ﻿@model Article
-    <div class="container">
-        <h1 class="article-header">@Model.Title</h1>
-        <img class="img-size" src="@Model.Main_Image" />
-        <div class="article-info">
-            <p class="published">Published: @Model.Published</p>
-            <p class="author">Written by: @Model.Author</p>
-        </div>
-        <p>@Model.Text</p>
-        <div class="article-url">
-            <a href="@Model.Url" target="_blank">Read the original article here</a>
-        </div>
-
-
-
-        <form class="comment-form" action="~/Article/PostComment?id=@Model.Uuid.ToString()" method="post">
-            <h3>Comments</h3>
-            <hr />
-            <div class="comment-group">
-                <input class="text-area" type="text" name="text" />
-                <input class="comment-send" type="submit" value="Send" />
-            </div>
-            <div class="comment-section">
-                @foreach (var comment in Model.Comments)
-                {
-                    <p class="comment">- @comment.Textfield</p><hr />
-                }
-            </div>
-        </form>
-       
+<div class="container">
+    <h1 class="article-header">@Model.Title</h1>
+    <img class="img-size" src="@Model.Main_Image" />
+    <div class="article-info">
+        <p class="published">Published: @Model.Published</p>
+        <p class="author">Written by: @Model.Author</p>
     </div>
+    <p>@Model.Text</p>
+    <div class="article-url">
+        <a href="@Model.Url" target="_blank">Read the original article here</a>
+    </div>
+    @if (User?.Identity?.IsAuthenticated ?? true)
+    {
+        var username = Context.User.Identity.Name;
+        <p>@username</p>
+    }
+
+
+
+    @foreach (var comment in Model.Comments)
+    {
+        <p>@comment.Textfield</p>
+
+    }
+
+
+    <form class="comment-form" action="~/Article/PostComment?id=@Model.Uuid.ToString()" method="post">
+        <h3>Comments</h3>
+        <hr />
+        <div class="comment-group">
+            <input class="text-area" type="text" name="text" />
+            <input class="comment-send" type="submit" value="Send" />
+        </div>
+        <div class="comment-section">
+            @foreach (var comment in Model.Comments)
+            {
+                <p class="comment">- @comment.Textfield</p><hr />
+            }
+        </div>
+    </form>
+
+</div>
 
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
