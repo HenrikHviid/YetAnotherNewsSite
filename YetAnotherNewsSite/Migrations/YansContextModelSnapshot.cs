@@ -160,11 +160,17 @@ namespace YetAnotherNewsSite.Migrations
                     b.Property<string>("Author")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Main_Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Published")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Site_Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");

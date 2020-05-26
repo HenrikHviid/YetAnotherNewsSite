@@ -40,12 +40,15 @@ namespace YetAnotherNewsSite.Models
                 //Create article object
                 var article = new Article();
                 //Fill out article properties
+
+                article.Site_Type = post["thread"]["site_type"].ToString();
                 article.Uuid = post["uuid"].ToString();
                 article.Title = post["title"].ToString();
                 article.Text = post["text"].ToString();
                 article.Main_Image = post["thread"]["main_image"].ToString();
                 article.Author = post["author"].ToString();
                 article.Url = post["url"].ToString();
+                article.Language = post["language"].ToString();
 
                 //converting published time from string to DateTime
                 var published = post["published"].ToString();
@@ -67,8 +70,8 @@ namespace YetAnotherNewsSite.Models
                 {
                     continue;
                 }
-                //checking if the article contains image and has title
-                if (ContainsImage(article) && HasTitle(article))
+                //checking if the article contains image, has title, is in english and is news
+                if (ContainsImage(article) && HasTitle(article) && IsEnglish(article) && IsNews(article))
                 {
                     articles.Add(article);
                     //if so. Add to database
@@ -104,6 +107,17 @@ namespace YetAnotherNewsSite.Models
         {
             return article.Title != "";
         }
+
+        private bool IsEnglish(Article article)
+        {
+            return article.Language == "english";
+        }
+
+        private bool IsNews(Article article)
+        {
+            return article.Site_Type == "news";
+        }
+
         //checking if there is an image
         //public bool URLExists(Article article)
         //{
