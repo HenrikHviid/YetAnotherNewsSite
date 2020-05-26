@@ -10,7 +10,7 @@ using YetAnotherNewsSite.Models;
 
 namespace YetAnotherNewsSite.Controllers
 {
-    [Authorize(Roles = "Admins")]
+    //[Authorize(Roles = "Admins")]
     public class RoleAdminController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

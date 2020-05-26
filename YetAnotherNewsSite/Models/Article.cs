@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -16,6 +17,12 @@ namespace YetAnotherNewsSite.Models
         public string Author { get; set; }
         public string Url { get; set; }
         public DateTime Published { get; set; }
-        public IEnumerable<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
+
+        public Article()
+        {
+        }
+
+
     }
 }

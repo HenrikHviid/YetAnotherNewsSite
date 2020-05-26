@@ -5,17 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200518085752_InitialCreate.cs" />
-    <Compile Remove="Migrations\20200518085752_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20200518123045_Add-Migration a.cs" />
-    <Compile Remove="Migrations\20200518123045_Add-Migration a.Designer.cs" />
-    <Compile Remove="Migrations\20200519071551_delete-migration.cs" />
-    <Compile Remove="Migrations\20200519071551_delete-migration.Designer.cs" />
-    <Compile Remove="Migrations\20200523200439_InitialCreate.cs" />
-    <Compile Remove="Migrations\20200523200439_InitialCreate.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />

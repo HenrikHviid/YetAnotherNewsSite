@@ -12,5 +12,11 @@ namespace YetAnotherNewsSite.Models
         public string Textfield { get; set; }
         public User User { get; set; }
         public int ArticleId { get; set; }
+
+        public Comment()
+        {
+
+        }
+
     }
 }
