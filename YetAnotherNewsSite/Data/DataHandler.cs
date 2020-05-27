@@ -11,7 +11,7 @@ namespace YetAnotherNewsSite.Models
 {
     public class DataHandler
     {
-        private const string API_KEY = "307546ea-92f0-406e-bff9-891ef14289b0";
+        private const string API_KEY = "1329148c-23c4-4d3a-8d0f-8a26f26243dd";
 
         private readonly YansContext _context;
         public DataHandler(YansContext context)
